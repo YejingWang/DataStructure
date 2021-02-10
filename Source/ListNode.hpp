@@ -1,18 +1,17 @@
 #pragma once
 
 typedef int Rank;
-#define ListNodePosi(T) ListNode<T>*
 
 template <typename T>
 struct ListNode {
     T data;
-    ListNodePosi(T) pred;
-    ListNodePosi(T) succ;
+    ListNode<T>* pred;
+    ListNode<T>* succ;
 
     ListNode() {}
-    ListNode(T e, ListNodePosi(T) p = nullptr, ListNodePosi(T) s = nullptr) :
+    ListNode(T e, ListNode<T>* p = nullptr, ListNode<T>* s = nullptr) :
         data(e), pred(p), succ(s) {}
 
-    ListNodePosi(T) insertAsPred(T const& e);
-    ListNodePosi(T) insertAsSucc(T const& e);
+    ListNode<T>* insertAsPred(T const& e);
+    ListNode<T>* insertAsSucc(T const& e);
 };
