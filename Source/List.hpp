@@ -25,7 +25,7 @@ public:
     List(ListNode<T>* p, int n); // copy n nodes starting from p
     ~List(); // destructor
 
-    /* Read-only*/
+    /* Read-only */
     Rank size() const { return mSize; }
     bool empty() const { return mSize <= 0; }
     T& operator[](Rank r) const;
@@ -40,7 +40,7 @@ public:
     ListNode<T>* selectMax(ListNode<T>* p, int n);
     ListNode<T>* selectMax() { return selectMax(mHeader->succ, mSize); }
 
-    /*Writable*/
+    /* Writable */
     ListNode<T>* insertAsFirst(T const& e);
     ListNode<T>* insertAsLast(T const& e);
     ListNode<T>* insertA(ListNode<T>* p, T const& e);
@@ -53,7 +53,7 @@ public:
     int uniquify();
     void reserve();
 
-    /*Traversal*/
+    /* Traversal */
     void traverse(void(*)(T&));
     template <typename VST> void traverse(VST&);
 };
