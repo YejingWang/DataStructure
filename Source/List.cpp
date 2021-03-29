@@ -1,6 +1,7 @@
 #include <assert.h>
 
 #include "List.hpp"
+#include "util/comparator.hpp"
 
 template <typename T>
 void List<T>::init()
