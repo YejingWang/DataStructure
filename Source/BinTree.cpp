@@ -74,4 +74,33 @@ template <typename T>
 int BinTree<T>::remove(BinNode<T>* x)
 {
     FromParentTo(*x) = nullptr;
+    updateHeightAbove(x->parent);
+    int n = removeAt(x);
+    mSize -= n;
+    return n;
+}
+
+template <typename T>
+static int removeAt(BinNode<T>* x)
+{
+    if (!x) {
+        return 0;
+    }
+    int n = 1 + removeAt(x->lc) + removeAt(x->rc);
+    release(x->data);
+    release(x);
+    return n;
+}
+
+template <typename T>
+BinTree<T>* BinTree<T>::secede(BinNode<T>* x)
+{
+    FromParentTo(*x) = nullptr;
+    updateHeightAbove(*x);
+    BinTree<T>* S = new BinTree<T>;
+    S->root = x;
+    x->parent = nullptr;
+    S->mSize = x->size();
+    mSize -= S->mSize;
+    return S;
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "BinNodeMacro.hpp"
+
 #define stature(p) ((p) ? (p)->height : -1)
 
 typedef enum { RB_RED, RB_BLACK } RBColor;
@@ -37,7 +39,7 @@ struct BinNode {
     int size();
     BinNode<T>* insertAsLC(T const&);
     BinNode<T>* insertAsRC(T const&);
-    BinNode<T>* succ();
+    BinNode<T>* succ(); // successor in inorder traversal
     template <typename VST> void travLevel(VST&);
     template <typename VST> void travPre(VST&);
     template <typename VST> void travIn(VST&);
